@@ -11,6 +11,8 @@ install:
   - pip install Django==$DJANGO
   - python setup.py install
   - pip install coverage
+  - pip install mock
+  - pip install nose
 
 script: coverage run test.py
 
