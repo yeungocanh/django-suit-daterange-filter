@@ -1,5 +1,4 @@
 from datetime import datetime, time
-
 from django import forms
 from django.conf import settings
 from django.contrib import admin
@@ -15,7 +14,7 @@ class DateRangeForm(forms.Form):
         Automaticaly generate form fields with dynamic names based on the filtering field name
         """
         self.field_name = kwargs.pop('field_name', 'date')
-        super().__init__(*args, **kwargs)
+        super(DateRangeForm, self).__init__(*args, **kwargs)
 
         self.fields['%s_start' % self.field_name] = forms.DateField(
             widget=SuitDateWidget, label=pgettext('date', 'From'), required=False)
@@ -27,10 +26,6 @@ class DateRangeForm(forms.Form):
             start = self.cleaned_data.get('%s_start' % self.field_name)
             if start:
                 start = datetime.combine(start, time.min)
-
-                if settings.USE_TZ:
-                    return timezone.make_aware(start)
-
             return start
 
     def end_date(self):
@@ -38,10 +33,6 @@ class DateRangeForm(forms.Form):
             end = self.cleaned_data.get('%s_end' % self.field_name)
             if end:
                 end = datetime.combine(end, time.max)
-
-                if settings.USE_TZ:
-                    return timezone.make_aware(end)
-
             return end
 
     class Media:
@@ -58,7 +49,7 @@ class DateRangeFilter(admin.FieldListFilter):
 
     def choices(self, cl):
         return [{
-            'query_string': [],
+            'query_string': '',
         }]
 
     def get_form(self, request):
@@ -66,11 +57,6 @@ class DateRangeFilter(admin.FieldListFilter):
 
     def queryset(self, request, queryset):
         form = self.get_form(request)
-
-        """
-        That's the trick — we create self.form when django tries to get our queryset.
-        This allowes to create unbount and bound form in the single place.
-        """
         self.form = form
 
         start_date = form.start_date()
