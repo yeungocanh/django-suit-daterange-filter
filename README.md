@@ -11,6 +11,7 @@ Yet another filter for Django admin interface, adding possibility to lookup by d
 Key features:
 
 * Support both DateField and DateTimeField
+* Python2 compatibility
 * User timezone support
 * Simplest ever (< 128 SLOC)
 * Well tested
