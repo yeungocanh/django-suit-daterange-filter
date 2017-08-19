@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/yeungocanh/django-suit-daterange-filter-python2.svg?branch=master)](https://travis-ci.org/yeungocanh/django-suit-daterange-filter-python2/)
 [![codecov](https://codecov.io/gh/yeungocanh/django-suit-daterange-filter/branch/master/graph/badge.svg)](https://codecov.io/gh/yeungocanh/django-suit-daterange-filter)
 
-Yet another filter for Django admin interface, adding possibility to lookup by date range. The filter is only compatible with [django-suit](https://github.com/darklow/django-suit) (does anyone use ugly stock admin now?) and python3.
+Yet another filter for Django admin interface, adding possibility to lookup by date range. The filter is only compatible with [django-suit](https://github.com/darklow/django-suit) (does anyone use ugly stock admin now?) and python2.
 
 ![django-suit-daterange-filter](https://cloud.githubusercontent.com/assets/1592663/23668937/af6d1b54-0373-11e7-8ed2-3e4dcb9b3b54.png)
 
